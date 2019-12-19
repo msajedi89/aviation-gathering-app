@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="dark">
+        <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{ news.Title }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="isLoaded">
+    <div class="keep-news-image">
+      <img src="{{ newsImageURL }}" alt="" srcset="">
+    </div>
+
+    <div class="keep-published-date">
+      <p>Published Date: <span>{{ news.PublishedDate | date }}</span></p>
+    </div>
+
+    <div class="keep-summary">
+      <h3>{{ news.Summary }}</h3>
+    </div>
+
+    <div class="keep-news-body">
+      <h4>Description:</h4>
+      <p>{{ news.News }}</p>
+    </div>
+  </div>
+
+</ion-content>

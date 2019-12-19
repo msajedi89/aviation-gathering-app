@@ -1,0 +1,79 @@
+ion-content {
+    //--ion-background-color: #ffeac9;
+}
+
+.keep-user-image {
+    margin-bottom: 0px !important;
+
+    img {
+        width: 100%;
+        max-height: 250px;
+        margin-bottom: 0px !important;
+    }
+
+    .keep-user-name {
+        color: var(--ion-color-warning);
+    }
+
+    .keep-total-tickets {
+        color: var(--ion-color-warning);
+
+        .total-ticket {
+            color: var(--ion-color-dark);
+        }
+    }
+}
+
+h4 {
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: var(--ion-color-dark);
+}
+
+.ticket-received {
+    .no-tickets {
+        text-align: center;
+        
+        p {
+            margin-top: 100px;
+            color: var(--ion-color-dark);
+        }
+    }
+}
+
+.keep-tickets {
+
+    .not-paid-card {
+        background-color: lightsalmon;
+    }
+
+    .bg-red{
+        background-color: lightgreen;
+    }
+
+    ion-item {
+        --background: transparent !important;
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+
+    .keep-event-title {
+        font-size: medium;
+    }
+
+    .keep-total-tickets {
+        font-size: medium;
+    }
+
+    .keep-ticket-count {
+        font-size: small;
+        color: var(--ion-color-dark);
+    }
+
+    .keep-sale-date {
+        font-size: small;
+        color: var(--ion-color-dark);
+    }
+}

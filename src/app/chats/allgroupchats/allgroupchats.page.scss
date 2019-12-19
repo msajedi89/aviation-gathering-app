@@ -1,0 +1,58 @@
+ion-content {
+    //--ion-background-color: #ffeac9;
+}
+
+ion-card {
+    --background: var(--ion-color-primary) !important;
+
+    ion-card-title {
+        color: var(--ion-color-dark);
+    }
+}
+
+.not-logged-in {
+    text-align: center;
+    margin-top: 200px;
+    padding: 10px;
+
+    h4 {
+        font-weight: bold;
+    }
+
+    .keep-login-button {
+        margin-top: 30px;
+        text-align: center;
+    }
+}
+
+.no-events {
+    text-align: center;
+    margin-top: 50px;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    p {
+        font-weight: bold;
+    }
+}
+
+.all-events-list {
+
+    ion-item-sliding {
+        margin-top: 5px;
+    }
+
+    ion-item {
+        --min-height: 100px;
+    
+        ion-thumbnail {
+            height: 100px;
+            width: 100px;
+
+            img {
+                border-radius: 15px;
+            }
+        }
+    }
+}

@@ -1,0 +1,112 @@
+ion-content {
+    //--ion-background-color: #ffeac9;
+}
+
+ion-card {
+    --background: var(--ion-color-primary) !important;
+
+    ion-card-title {
+        color: var(--ion-color-dark);
+    }
+}
+
+.not-logged-in {
+    text-align: center;
+    margin-top: 200px;
+    padding: 10px;
+
+    h4 {
+        font-weight: bold;
+    }
+
+    .keep-login-button {
+        margin-top: 30px;
+        text-align: center;
+    }
+}
+
+.user-logged-in {
+    margin-top: 20px;
+    
+    .ticket-inputs-card {
+        --background: #fff !important;
+
+        .keep-segment {
+            margin-bottom: 30px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .keep-seat-info {
+            margin-bottom: 15px;
+        }
+
+        h5 {
+            padding-left: 10px;
+            font-weight: bold;
+        }
+
+        .keep-inputs {
+            margin-top: 20px;
+
+            ion-label {
+                font-weight: bold;
+            }
+
+            ion-item {
+                --ion-background-color: #f0e0e0;
+    
+                ion-input {
+                    font-size: 16px;
+                    color: var(--ion-color-medium);
+                }
+            }
+        }
+
+        .keep-total-price {
+            margin-top: 15px;
+
+            .total-price-label {
+                font-size: large;
+                font-weight: bold;
+            }
+
+            .keep-total-price {
+                font-size: large;
+                font-weight: bold;
+                color: var(--ion-color-danger);
+            }
+        }
+
+        .keep-payment-button {
+            margin-top: 40px;
+
+            ion-button {
+                width: 200px;
+            }
+        }
+    }
+}
+
+.keep-event-card {
+    margin-top: 40px;
+
+    ion-card {
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        ion-item {
+            --min-height: 100px;
+            --background: transparent !important;
+        
+            ion-thumbnail {
+                height: 100px;
+                width: 100px;
+
+                img {
+                    border-radius: 15px;
+                }
+            }
+        }
+    }
+}

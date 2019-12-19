@@ -1,0 +1,62 @@
+// Fullscreen centered image background
+ion-content {
+    --color: #fff;
+    --background: none;
+    background: url(../../../assets/background-3.jpg) no-repeat 0 0;
+    background-size: cover;
+  }
+
+  ion-toolbar {
+      margin-top: 5px;
+      --background: transparent !important;
+  }
+  
+  .logo {
+    width: 50%;
+    height: auto;
+    max-width: 12em;
+    margin: 0 auto;
+    padding-bottom: 10px;
+  }
+  .no-border {
+    margin-top: 60px;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 30px;
+  }
+  ion-row {
+    align-items: center;
+    text-align: center;
+  }
+  @media only screen and (min-width: 768px) {
+    ion-col.col {
+      margin: 0 auto;
+      max-width: 40%;
+    }
+  }
+  span {
+    color: white;
+  }
+  ion-item {
+    // border-radius: 30px !important;
+    padding-left: 10px !important;
+    margin-bottom: 10px;
+    --ion-background-color: transparent !important;
+    font-size: 0.9em;
+    color: #fff;
+  }
+  ion-list {
+    margin: 0;
+  }
+
+ion-input {
+    --placeholder-color: #fff !important;
+    opacity: 1 !important;
+}
+
+.errorMsg {
+  color: var(--ion-color-danger);
+}

@@ -1,0 +1,57 @@
+ion-content {
+    //--ion-background-color: #ffeac9;
+}
+
+.headerDiv {
+    margin-bottom: 0px !important;
+    padding-bottom: 0px;
+    height: 30%;
+    background: #fff;
+
+    .headerImg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .keep-menu-button {
+        position: absolute;
+        left: 5px;
+        top: 15px;
+        z-index: 1;
+    }
+}
+
+h4 {
+    margin-left: 10px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: var(--ion-color-dark);
+}
+
+.seats-price {
+    color: var(--ion-color-danger);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.seats-left {
+    color: var(--ion-color-dark);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+
+.ionitem-in-footer {
+    --ion-background-color: transparent !important;
+
+    .button-in-footer {
+        --border-radius: 50px;
+        font-size: medium;
+        margin-right: 8px !important;
+    }
+    
+    .label-in-footer {
+        color: var(--ion-color-danger);
+    }
+}

@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Manage Customers
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="header-card">
+    <ion-card-header>
+      <ion-card-title color="primary" style="margin-bottom: 15px !important;">
+        Manage Customers
+      </ion-card-title>
+      <p>You see the list of all <em>Customers</em> here and you can Enable/Disable customer by swiping them left.</p>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-toolbar color="#ffeac9" class="search-toolbar">
+    <ion-searchbar placeholder="Search User Family" [(ngModel)]="mySearch" [showCancelButton]="shouldShowCancel"
+      (ionChange)="updateCustomers($event)" debounce="1000"></ion-searchbar>
+  </ion-toolbar>
+
+
+  <div class="not-loaded" *ngIf="!isLoaded">
+    <p style="text-align: center;">
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+
+  <div class="loaded" *ngIf="isLoaded">
+
+    <div class="keep-no-customer" *ngIf="allCustomers =='0 result'">
+      <p>No Result</p>
+    </div>
+
+    <div class="keep-customers" *ngIf="allCustomers !='0 result'">
+      <ion-list style="margin-top: 10px;">
+        <ion-item-sliding *ngFor="let item of allCustomers">
+          <ion-item lines="none">
+            <ion-thumbnail slot="start" class="item-ribbon">
+              <span class="ribbon sale" *ngIf="item.Status=='0'">
+                <span>Disabled</span>
+              </span>
+              <img src="{{ userImageURL + item.ProfileImg }}" alt="">
+            </ion-thumbnail>
+            <ion-label>
+              <h2 style="white-space: normal;">{{ item.Name }} {{ item.Family }}</h2>
+              <p style="white-space: normal;">Username: {{ item.Username }}</p>
+              <h3 style="font-size: small;">Address: {{ item.Address }}</h3>
+            </ion-label>
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option color="secondary" (click)="showDetails(item.UserID)">
+              <ion-icon name="create" style="font-size: x-large;" slot="top"></ion-icon>
+              Details
+            </ion-item-option>
+            <ion-item-option color="danger" *ngIf="item.Status=='1'" (click)="disableUser(item.UserID)">
+              <ion-icon name="close" style="font-size: x-large;" slot="top"></ion-icon>
+              Disable
+            </ion-item-option>
+            <ion-item-option color="success" *ngIf="item.Status=='0'" (click)="enableUser(item.UserID)">
+              <ion-icon name="checkmark" style="font-size: x-large;" slot="top"></ion-icon>
+              Enable
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="dark">
+        <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Ticket Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div style="text-align: center;" *ngIf="!isLoaded">
+    <p>
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+
+  <div class="keep-ticket" *ngIf="isLoaded">
+
+    <ion-card class="welcome-card">
+      <img src="{{ eventImage }}" alt="" />
+      <ion-card-header>
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-card-subtitle slot="start" class="location">{{ ticket.Location }}</ion-card-subtitle>
+        </ion-item>
+        <ion-card-title class="activeEventTitle">{{ ticket.Title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="summery">{{ ticket.Summary }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="keep-dates">
+      <ion-item lines="none">
+        <ion-icon name="calendar" slot="start"></ion-icon>
+        <p><span class="keep-title">Start Date: </span><span class="keep-date">{{ ticket.StartDate }}</span></p>
+      </ion-item>
+    </ion-card>
+
+    <ion-card class="keep-dates">
+      <ion-item lines="none">
+        <ion-icon name="calendar" slot="start"></ion-icon>
+        <p><span class="keep-title">End Date: </span><span class="keep-date">{{ ticket.EndDate }}</span></p>
+      </ion-item>
+    </ion-card>
+
+    <ion-card class="keep-ticket-info">
+      <ion-item>
+        <ion-icon name="alert" slot="start"></ion-icon>
+        <ion-label>Ticket Informations</ion-label>
+      </ion-item>
+      <ion-card-content>
+        <div>
+          <p *ngIf="ticket.TicketType=='normal'">
+            <strong>Ticket Type: </strong><span class="ticket-type">Normal Ticket</span>
+          </p>
+          <p *ngIf="ticket.TicketType=='vip'">
+            <strong>Ticket Type: </strong><span class="ticket-type">VIP Ticket</span>
+          </p>
+          <p><strong>Ticket Count: </strong><span class="ticket-count">{{ ticket.Count }} Tickets</span></p>
+          <p><strong>Total Price: </strong><span class="ticket-total-price">{{ ticket.TotalPrice }} AED</span></p>
+          <p><strong>Sale Date: </strong><span class="ticket-sale-date">{{ ticket.SaleDate }}</span></p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <div *ngIf="ticket.Payment=='0'">
+      <ion-item lines="none" color="danger">
+        <ion-icon name="cart" slot="start"></ion-icon>
+        <ion-label>Not Paid</ion-label>
+        <ion-button (click)="goForPayment()" color="light" slot="end" fill="outline" size="small">Pay with PayPal</ion-button>
+      </ion-item>
+    </div>
+
+    <div *ngIf="ticket.Payment=='1'">
+      <ion-item lines="none" color="success">
+        <ion-icon name="cart" slot="start"></ion-icon>
+        <ion-label>Paid</ion-label>
+      </ion-item>
+    </div>
+
+  </div>
+
+</ion-content>

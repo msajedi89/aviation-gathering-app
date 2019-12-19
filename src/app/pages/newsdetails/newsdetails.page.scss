@@ -1,0 +1,41 @@
+ion-content {
+    //--ion-background-color: #ffeac9;
+}
+
+.keep-news-image {
+    margin-bottom: 0px !important;
+
+    img {
+        width: 100%;
+        margin-bottom: 0px !important;
+    }
+}
+
+.keep-published-date {
+    padding-left: 8px;
+    margin-top: 0px !important;
+
+    p {
+        margin-top: 3px !important;
+        font-size: small;
+
+        span {
+            margin-top: 0px !important;
+            color: var(--ion-color-danger);
+        }
+    }
+}
+
+.keep-summary {
+    padding: 10px;
+    font-weight: bold;
+    //color: var(--ion-color-primary);
+}
+
+.keep-news-body {
+    padding: 10px;
+
+    h4 {
+        color: var(--ion-color-dark);
+    }
+}

@@ -1,0 +1,122 @@
+ion-content {
+  //--ion-background-color: #ffeac9;
+}
+
+.header-card {
+  --background: var(--ion-color-primary) !important;
+
+  ion-card-title {
+    color: #c28338;
+  }
+}
+
+.search-toolbar {
+  padding-left: 30px;
+  padding-right: 30px;
+  
+  ion-searchbar {
+      background-color: #E8CAA6;
+      border-radius: 50px;
+      color: #c28338;
+      margin-top: 0px;
+      padding: 10px;
+      height: 35px;
+  }
+}
+
+.keep-no-customer {
+  margin-top: 40%;
+  text-align: center;
+  color: #c28338;
+}
+
+ion-item {
+    --min-height: 80px;
+
+    ion-thumbnail {
+        img {
+            border-radius: 50%;
+        }
+    }
+}
+
+
+
+@mixin ribbonize ($ribbon-color, $text-color: white, $border-width: 3px) {
+    span {
+      color: $text-color;
+      background: $ribbon-color;
+      &::before {
+        border-left: $border-width solid $ribbon-color;
+        border-top: $border-width solid $ribbon-color;
+      }
+      &::after {
+        border-right: $border-width solid $ribbon-color;
+        border-top: $border-width solid $ribbon-color;
+      }
+    }
+  }
+
+  $default: #f53d3d;
+  $cruzeiro: #387ef5;
+  $atletico: darken(#f4f4f4, 45%);
+  $javascript: #f7e023;
+
+  .item-ribbon{
+    background-color: #fff;
+    position: relative;
+    filter: none;
+    opacity: 1;
+    .ribbon {
+      position: absolute;
+      right: -5px;
+      top: -5px;
+      z-index: 2;
+      overflow: hidden;
+      width: 50px;
+      height: 50px;
+      text-align: right;
+      span {
+        font-size: 10px;
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 20px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        width: 100px;
+        display: block;
+        background: $default;
+        position: absolute;
+        top: 11px;
+        right: -30px;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 100%;
+          z-index: -1;
+          border-left: 3px solid $default;
+          border-right: 3px solid transparent;
+          border-bottom: 3px solid transparent;
+          border-top: 3px solid $default;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 100%;
+          z-index: -1;
+          border-left: 3px solid transparent;
+          border-right: 3px solid $default;
+          border-bottom: 3px solid transparent;
+          border-top: 3px solid $default;
+        }
+      }
+    }
+  }
+
+  .ribbon.cruzeiro {
+    @include ribbonize($cruzeiro);
+  }

@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Customer New Messages
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div style="text-align: center;" *ngIf="!isLoaded">
+    <p>
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+
+  <div class="keep-msgs" *ngIf="isLoaded">
+    <div class="no-chats-yet" *ngIf="allNewChats=='0 result'">
+      <p>You have no new messages</p>
+      <p class="keep-all-customers-button">
+        <ion-button expand="block" color="dark" (click)="showAllCustomers()" size="small">All Customers</ion-button>
+      </p>
+    </div>
+
+    <div class="chat-messages" *ngIf="allNewChats!='0 result'">
+      <ion-list>
+        <ion-item lines="none" style="margin-left: 0px !important; padding-left: 0px !important;">
+          <ion-list-header style="margin-left: 0px !important; padding-left: 0px !important;">Customer New messages
+          </ion-list-header>
+          <ion-buttons slot="end">
+            <ion-button expand="block" color="dark" fill="outline" (click)="showAllCustomers()" size="small">
+              All Customers
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+        <div *ngFor="let item of allCustomers;">
+          <ion-item (click)="goForChat(item.UserChat)">
+            <ion-avatar slot="start">
+              <img src="{{ customerProfileImageURL + item.ProfileImg }}" alt="">
+            </ion-avatar>
+            <ion-label>
+              <h2 style="white-space: normal;">{{ item.Username }}</h2>
+              <p style="white-space: normal; color: var(--ion-color-dark);">{{ item.Message }}</p>
+            </ion-label>
+            <ion-note slot="end">{{ item.CreatedAt | date }}</ion-note>
+            <ion-buttons slot="end" style="margin-right: 0px;">
+              <ion-button color="medium" style="font-size: 14px; margin-right: 0px;">
+                <ion-icon name="arrow-forward">
+                </ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+
+</ion-content>

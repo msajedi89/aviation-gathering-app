@@ -1,0 +1,51 @@
+<ion-content forceOverscroll="false">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="primary">
+        <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
+        </ion-icon>
+        Back
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+
+  <div>
+    <ion-row>
+      <ion-col>
+        <img class="logo" src="../../../assets/aviation-logo.png" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list class="no-border">
+          <h3>Login:</h3>
+          <ion-item lines="none">
+            <ion-icon name="person" color="light" slot="start" style="font-size: 30px;"></ion-icon>
+            <ion-input type="text" [(ngModel)]="username" placeholder="Username"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="lock" color="light" slot="start" style="font-size: 30px;"></ion-icon>
+            <ion-input type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button class="login-button" (click)="login(username,password)">LOGIN</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div>
+          <span>Or create a <a routerLink="/signup">New Account.</a></span>
+        </div>
+        <div class="errorMsg">
+          <p>{{ errorMsg }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

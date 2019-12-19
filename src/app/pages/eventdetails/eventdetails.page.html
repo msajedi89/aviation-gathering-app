@@ -1,0 +1,96 @@
+<div class="headerDiv">
+  <img class="headerImg" src="{{ eventImage }}">
+  <div class="keep-menu-button">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="dark">
+        <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </div>
+</div>
+
+<ion-content>
+
+  <h4>{{ event.Title }}</h4>
+
+  <ion-card *ngIf="event.Summary!==''">
+    <ion-item>
+      <ion-icon name="clipboard" slot="start"></ion-icon>
+      <ion-label>Summary</ion-label>
+    </ion-item>
+    <ion-card-content>
+      {{ event.Summary }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-item lines="none">
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label>Start Date: {{ event.StartDate }}</ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-item lines="none">
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label>End Date: {{ event.EndDate }}</ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngIf="event.VipGuests!==''">
+    <ion-item>
+      <ion-icon name="ribbon" slot="start"></ion-icon>
+      <ion-label>VIP Guests</ion-label>
+    </ion-item>
+    <ion-card-content>
+      {{ event.VipGuests }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="event.Location!==''">
+    <ion-item lines="none">
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <ion-label>Location: {{ event.Location }}</ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngIf="event.OpenTicket==='1'">
+    <ion-item>
+      <ion-icon name="alert" slot="start"></ion-icon>
+      <ion-label>Seats Information</ion-label>
+    </ion-item>
+    <ion-card-content>
+      <div *ngIf="event.IsRanked==='1'">
+        <p><strong>Normal Seats Left: </strong><span class="seats-left">{{ event.NormalSeats }}</span></p>
+        <p><strong>Normal Seats Price: </strong><span class="seats-price">{{ event.NormalPrice }} AED</span></p>
+        <p><strong>VIP Seats Left: </strong><span class="seats-left">{{ event.VipSeats }}</span></p>
+        <p><strong>VIP Seats Price: </strong><span class="seats-price">{{ event.VipPrice }} AED</span></p>
+      </div>
+      <div *ngIf="event.IsRanked==='0'">
+        <p><strong>Normal Seats Left: </strong><span class="seats-left">{{ event.NormalSeats }}</span></p>
+        <p><strong>Normal Seats Price: </strong><span class="seats-price">{{ event.NormalPrice }} AED</span></p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="event.Description!==''">
+    <ion-item>
+      <ion-icon name="paper" slot="start"></ion-icon>
+      <ion-label>Description</ion-label>
+    </ion-item>
+    <ion-card-content>
+      {{ event.Description }}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-item lines="none" class="ionitem-in-footer">
+      <ion-label slot="start" class="label-in-footer">{{ event.NormalPrice }} AED</ion-label>
+      
+      <ion-button *ngIf="enableBookButton" (click)="bookTicket()" color="danger" slot="end" fill="outline" size="small">Book Your Ticket</ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

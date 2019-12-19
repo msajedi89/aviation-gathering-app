@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="dark">
+        <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Customer Tickets
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="is-loaded" *ngIf="isLoaded">
+    <div class="keep-user-image">
+      <img src="{{ userImageURL }}" alt="" srcset="">
+      <ion-item>
+        <p class="keep-user-name">{{ user.Name }} {{ user.Family }}</p>
+        <p class="keep-total-tickets" slot="end">Total Tickets: <span class="total-ticket">4</span></p>
+      </ion-item>
+    </div>
+  </div>
+
+  <h4>Customer Tickets</h4>
+
+  <div class="ticket-not-received-yet" *ngIf="!ticketsRecieved" style="text-align: center;">
+    <p class="keep-spinner">
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+
+  <div class="ticket-received" *ngIf="ticketsRecieved">
+
+    <div class="no-tickets" *ngIf="customerTickets == '0 result'">
+      <p>This customer has not booked any Ticket.</p>
+    </div>
+
+    <div class="keep-all-tickets" *ngIf="customerTickets != '0 result'">
+      <div class="keep-tickets" *ngFor="let item of customerTickets;">
+        <ion-card class="not-paid-card" [ngClass]="{'bg-red': item.Payment==1}" (click)="showTicketDetails(item.TicketID)">
+          <ion-item lines="none">
+            <p class="keep-event-title">{{ item.Title }}</p>
+            <p class="keep-total-tickets" slot="end">{{ item.TotalPrice }} AED</p>
+          </ion-item>
+          <ion-item lines="none">
+            <p class="keep-ticket-count">{{ item.Count }} ({{ item.TicketType }})</p>
+            <p class="keep-sale-date" slot="end">{{ item.SaleDate | date }}</p>
+          </ion-item>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

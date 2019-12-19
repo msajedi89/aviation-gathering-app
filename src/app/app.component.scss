@@ -1,0 +1,56 @@
+
+.menu-header {
+    padding: 5px 15px;
+    background-image: url('../assets/material-design-background.jpg');
+    background-size: cover;
+    color: white;
+
+    img {
+        margin-top: 10px;
+        border-radius: 50px;
+        -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+	    -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+	    box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .name {
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+    .e-mail {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+
+    .user-avatar {
+        //padding: .5em;
+        height: 12vh;
+    }
+      h3,
+      .label  {
+        color: #999;
+        font-weight: 400;
+      }
+      ion-icon {
+        color: #777;
+      }
+}
+
+
+
+// Menu Body
+.keep-menu-body {
+    padding: 7px;
+    padding-top: 5px;
+    
+    ion-label {
+        color: var(--ion-color-medium);
+    }
+}
+
+.keep-logout-button {
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+}

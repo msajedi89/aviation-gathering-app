@@ -1,0 +1,27 @@
+ion-content {
+    --color: #fff;
+    --background: none;
+    background: url(../../../assets/background-3.jpg) no-repeat 0 0;
+    background-size: cover;
+}
+
+ion-toolbar {
+    margin-top: 5px;
+    --background: transparent !important;
+}
+
+.keep-congratulations {
+    margin-top: 30%;
+    
+    h1 {
+        padding-left: 10px;
+    }
+}
+
+.keep-paragraph {
+    padding: 15px;
+
+    em {
+        color: var(--ion-color-primary);
+    }
+}

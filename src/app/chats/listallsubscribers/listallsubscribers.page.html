@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="dark">
+        <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      All Customers
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div style="text-align: center;" *ngIf="!isLoaded">
+    <p>
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+
+  <div class="keep-msgs" *ngIf="isLoaded">
+    <div class="no-chats-yet" *ngIf="allNewChats=='0 result'">
+      <p>You have no Customers yet.</p>
+    </div>
+
+    <div class="chat-messages" *ngIf="allNewChats!='0 result'">
+      <ion-list>
+        <ion-item lines="none" style="margin-left: 0px !important; padding-left: 0px !important;">
+          <ion-list-header style="margin-left: 0px !important; padding-left: 0px !important;">All Customers
+          </ion-list-header>
+        </ion-item>
+        <div *ngFor="let item of allCustomers;">
+          <ion-item (click)="goForChat(item.UserID)">
+            <ion-avatar slot="start">
+              <img src="{{ customerProfileImageURL + item.ProfileImg }}" alt="">
+            </ion-avatar>
+            <ion-label>
+              <h2 style="white-space: normal;" *ngIf="item.Name != null">{{ item.Name }} {{ item.Family }}</h2>
+              <h2 style="white-space: normal;" *ngIf="item.Name == null">{{ item.Username }}</h2>
+              <p style="white-space: normal;">{{ item.Email }}</p>
+            </ion-label>
+            <ion-note slot="end">{{ item.Mobile }}</ion-note>
+            <ion-buttons slot="end" style="margin-right: 0px;">
+              <ion-button color="medium" style="font-size: 14px; margin-right: 0px;">
+                <ion-icon name="arrow-forward">
+                </ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+
+</ion-content>

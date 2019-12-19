@@ -1,0 +1,52 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+
+      <ion-content>
+        <!-- User Profile -->
+        <div class="menu-header" *ngIf="userLoginStatus">
+          <img class="user-avatar" src="{{ userProfileImage }}" />
+          <p class="name">{{ user.Name }} {{ user.Family }}</p>
+          <p class="e-mail">{{ user.Username }}</p>
+        </div>
+
+        <div class="menu-header" *ngIf="!userLoginStatus">
+          <img src="../assets/shapes.svg" alt="" srcset="" height="100" width="100">
+          <p align="center">
+            <ion-menu-button autoHide="false">
+              <ion-button expand="block" color="primary" style="width: 200px;" (click)="login()" size="small">Login
+              </ion-button>
+            </ion-menu-button>
+          </p>
+        </div>
+
+        <!-- Menu -->
+        <div class="keep-menu-body">
+          <ion-list>
+            <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
+              <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" lines="none">
+                <ion-icon slot="start" color="primary" [name]="p.icon"></ion-icon>
+                <ion-label>
+                  {{p.title}}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
+        </div>
+
+        <div class="keep-logout-button" *ngIf="userLoginStatus">
+          <ion-buttons style="margin-left: 30%;">
+            <ion-menu-button autoHide="false">
+              <ion-button (click)="logout()" color="danger">
+                <ion-icon name="log-out" slot="start" style="font-size: 20px;">
+                </ion-icon>Logout
+              </ion-button>
+            </ion-menu-button>
+
+          </ion-buttons>
+        </div>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Event Management
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title color="primary" style="margin-bottom: 15px !important;">
+        Event Management
+      </ion-card-title>
+      <ion-card-subtitle>
+        You can Add a new <em>Event</em> or Edit your events here.
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <p align="center">
+      <ion-button size="small" color="dark" (click)="addEvent()" class="add-event-button">ADD EVENT</ion-button>
+    </p>
+  </ion-card>
+
+  <div class="not-loaded" *ngIf="!isLoaded">
+    <p style="text-align: center;">
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+
+
+  <div class="loaded" *ngIf="isLoaded">
+    <ion-list style="margin-top: 10px;">
+      <ion-item-sliding *ngFor="let item of allEvents">
+        <ion-item class="item-ribbon">
+          <span class="ribbon cruzeiro" *ngIf="item.Status=='0'">
+            <span>Disabled</span>
+          </span>
+          <ion-thumbnail slot="start">
+            <img src="{{ eventsImageURL + item.Img }}" alt="">
+          </ion-thumbnail>
+          <ion-label>
+            <h2 style="white-space: normal;">{{ item.Title }}</h2>
+            <p style="white-space: normal;">{{ item.Summary }}</p>
+            <h3 style="font-size: small; color: #eb596d;">{{ item.StartDate | date }}</h3>
+          </ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="secondary" (click)="editEvent(item.EventID)">
+            <ion-icon name="create" style="font-size: x-large;" slot="top"></ion-icon>
+            Edit
+          </ion-item-option>
+          <ion-item-option color="danger" *ngIf="item.Status=='1'" (click)="disableEvent(item.EventID)">
+            <ion-icon name="close" style="font-size: x-large;" slot="top"></ion-icon>
+            Disable
+          </ion-item-option>
+          <ion-item-option color="success" *ngIf="item.Status=='0'" (click)="enableEvent(item.EventID)">
+            <ion-icon name="checkmark" style="font-size: x-large;" slot="top"></ion-icon>
+            Enable
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+</ion-content>

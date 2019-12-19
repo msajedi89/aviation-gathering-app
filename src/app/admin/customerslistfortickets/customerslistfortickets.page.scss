@@ -1,0 +1,33 @@
+ion-content {
+    //--ion-background-color: #ffeac9;
+}
+
+.search-toolbar {
+    padding-left: 15px;
+    padding-right: 15px;
+    
+    ion-searchbar {
+        background-color: #E8CAA6;
+        border-radius: 50px;
+        color: #c28338;
+        margin-top: 10px;
+        padding: 10px;
+        height: 35px;
+    }
+}
+
+.keep-no-customer {
+    margin-top: 40%;
+    text-align: center;
+    color: #c28338;
+}
+
+ion-item {
+    --min-height: 60px;
+
+    ion-thumbnail {
+        img {
+            border-radius: 50%;
+        }
+    }
+}

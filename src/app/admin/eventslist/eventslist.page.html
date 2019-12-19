@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      All Events List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title color="primary" style="margin-bottom: 15px !important;">
+        Event List
+      </ion-card-title>
+      <p>You can see the list of all events for getting the list of each event subscribers. Swipe left and see the Subscribers list.</p>
+    </ion-card-header>
+  </ion-card>
+
+
+  <ion-list style="margin-top: 10px;">
+    <ion-item-sliding *ngFor="let item of allEvents">
+      <ion-item class="item-ribbon">
+        <ion-thumbnail slot="start">
+          <img src="{{ eventsImageURL + item.Img }}" alt="">
+        </ion-thumbnail>
+        <ion-label>
+          <h2 style="white-space: normal;">{{ item.Title }}</h2>
+          <p style="white-space: normal;">{{ item.Summary }}</p>
+          <h3 style="font-size: small; color: #eb596d;">{{ item.PublishedDate | date }}</h3>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="secondary" (click)="showEventSubscribers(item)">
+          <ion-icon name="people" style="font-size: x-large;" slot="top"></ion-icon>
+          Subscribers
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

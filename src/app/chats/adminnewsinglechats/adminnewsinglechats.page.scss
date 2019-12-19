@@ -1,0 +1,25 @@
+ion-content {
+    //--ion-background-color: #ffeac9;
+}
+
+.keep-msgs {
+
+    .no-chats-yet {
+        text-align: center;
+        margin-top: 50%;
+
+        .keep-all-customers-button {
+            text-align: center;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+
+    .chat-messages {
+        margin-top: 10px;
+
+        ion-note {
+            font-size: small;
+        }
+    }
+}

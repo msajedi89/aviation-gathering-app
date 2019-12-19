@@ -1,0 +1,28 @@
+ion-content {
+    //--ion-background-color: #ffeac9;
+}
+
+ion-card {
+    --background: var(--ion-color-primary) !important;
+
+    ion-card-title {
+        color: var(--ion-color-dark);
+    }
+}
+
+.no-subscribers {
+    text-align: center;
+}
+
+.keep-pdf-download-link {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+ion-note {
+    font-size: 14px;
+    align-self: flex-start;
+    margin-top: 20px;
+}

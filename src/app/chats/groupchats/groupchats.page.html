@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="dark">
+        <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{ event.Title }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div style="text-align: center;" *ngIf="!isLoaded">
+    <p>
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+
+  <div class="keep-msgs" *ngIf="isLoaded">
+    <div class="no-messages-yet" *ngIf="allMsgs == ''">
+      <p>There is no message here. Be the first person to send message.</p>
+    </div>
+
+    <div class="keep-all-msgs" *ngIf="allMsgs != ''">
+      <div *ngFor="let message of allMsgs" class="message-wrapper">
+        <div *ngIf="message.UserID !== userSend">
+          <img src="{{ userProfileImgURL + message.ProfileImg }}" class="profile-pic left" />
+          <!--  wave-->
+          <div class="chat-bubble left slide-left">
+
+            <div class="message" [innerHTML]="message.Message" autolinker>
+            </div>
+
+            <div class="message-detail">
+              <span class="keep-chat-name">{{ message.ChatName }}, </span>
+              <span class="keep-chat-date">{{message.CreatedAt | date:'short'}}</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div *ngIf="message.UserID === userSend">
+          <img src="{{ userProfileImgURL + message.ProfileImg }}" class="profile-pic right" />
+
+          <div class="chat-bubble right slide-right">
+
+            <div class="message" [innerHTML]="message.Message" autolinker>
+            </div>
+
+            <div class="message-detail">
+              <span class="keep-chat-name">{{ message.ChatName }}, </span>
+              <span class="keep-chat-date">{{message.CreatedAt | date:'short'}}</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="cf"></div>
+
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-row>
+      <ion-col size="10">
+        <ion-input [(ngModel)]="msgInput" style="width: 100%;" placeholder="Type your message here"></ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-buttons>
+          <ion-button (click)="sendMessage()" color="dark">
+            <ion-icon name="send" style="font-size: 30px; margin-left: 10px;">
+            </ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

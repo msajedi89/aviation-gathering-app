@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Edit Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list class="keep-personal-informations">
+    <ion-list-header>
+      Personal Informations
+    </ion-list-header>
+    <ion-item>
+      <ion-label slot="start">Name: </ion-label>
+      <ion-input type="text" [(ngModel)]="name" placeholder="Required" value="{{ user.Name }}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Family: </ion-label>
+      <ion-input type="text" [(ngModel)]="family" placeholder="Required" value="{{ user.Family }}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Mobile: </ion-label>
+      <ion-input type="text" [(ngModel)]="mobile" value="{{ user.Mobile }}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Email: </ion-label>
+      <ion-input type="text" [(ngModel)]="email" value="{{ user.Email }}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Chat Name: </ion-label>
+      <ion-input type="text" [(ngModel)]="chatName" placeholder="Required" value="{{ user.ChatName }}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Address: </ion-label>
+      <ion-textarea type="text" rows="3" [(ngModel)]="address" value="{{ user.Address }}"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="keep-account-informations">
+    <ion-list-header>
+      Account Informations
+    </ion-list-header>
+    <ion-item>
+      <ion-label slot="start">Username: </ion-label>
+      <ion-input disabled type="text" [(ngModel)]="username" placeholder="Required" value="{{ user.Username }}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Password: </ion-label>
+      <ion-input type="text" [(ngModel)]="pass" placeholder="Required" value="{{ user.Pass }}"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="keep-image">
+    <ion-list-header>
+      Profile Image
+    </ion-list-header>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="{{ profileImage }}" style="border-radius: 15px;" alt="">
+      </ion-thumbnail>
+      <p>{{ profileImageFileName }}</p>
+      <ion-button slot="end" size="small" color="dark" (click)="selectImage()">Select</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <div class="keep-save-button">
+    <ion-button (click)="saveChanges(name,family,mobile,email,chatName,address,pass)" color="primary" expand="block">Save</ion-button>
+  </div>
+
+</ion-content>

@@ -1,0 +1,40 @@
+ion-content {
+    //--ion-background-color: #ffeac9;
+}
+
+ion-card {
+    --background: var(--ion-color-primary) !important;
+}
+
+.keep-card {
+    ion-card-title {
+        color: var(--ion-color-dark);
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .keep-summary {
+        margin-left: 20px;
+    }
+
+    .keep-ticket-type {
+        font-weight: bold; 
+        margin-bottom: 5px;
+    }
+
+    .keep-ticket-count {
+        color: var(--ion-color-dark);
+        font-weight: bold; 
+        margin-bottom: 5px;
+    }
+
+    .keep-total-price {
+        color: var(--ion-color-danger);
+        font-weight: bold; 
+        margin-bottom: 10px;
+    }
+
+    .keep-transaction-id {
+        margin-top: 15px;
+    }
+}

@@ -1,0 +1,41 @@
+ion-content {
+    //--ion-background-color: #ffeac9;
+}
+
+ion-card {
+    --background: var(--ion-color-primary) !important;
+
+    ion-card-title {
+        color: var(--ion-color-dark);
+    }
+}
+
+ion-item {
+    padding-left: 0px !important;
+    padding-right: 0px;
+    margin-bottom: 5px;
+    margin-left: 0px !important;
+
+    ion-icon {
+        margin-right: 30px !important;
+    }
+}
+
+
+.keep-image {
+    ion-item {
+        --min-height: 90px;
+    
+        ion-thumbnail {
+            height: 80px;
+            width: 80px;
+        }
+    }
+}
+
+.keep-save-button {
+    margin-top: 50px;
+    margin-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}

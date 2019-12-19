@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="dark">
+        <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      News
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list style="margin-top: 15px; padding-left: 0px !important;">
+    <ion-list-header>
+      General
+    </ion-list-header>
+    <ion-item>
+      <ion-label slot="start" style="margin-right: 55px;">Title: </ion-label>
+      <ion-input type="text" [(ngModel)]="title" placeholder="Required" value="{{ news.Title }}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Summary: </ion-label>
+      <ion-textarea type="text" rows="4" [(ngModel)]="summary" value="{{ news.Summary }}"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>News: </ion-label>
+      <ion-textarea type="text" rows="7" [(ngModel)]="newsBody" value="{{ news.News }}"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="keep-image">
+    <ion-list-header>
+      News Image
+    </ion-list-header>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="{{ newsImage }}" style="border-radius: 15px;" alt="">
+      </ion-thumbnail>
+      <p>{{ newsImageFileName }}</p>
+      <ion-button slot="end" size="small" (click)="selectImage()">Select</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <div class="keep-save-button">
+    <ion-button (click)="saveChanges(title,summary,newsBody)" expand="block">Save</ion-button>
+  </div>
+
+</ion-content>

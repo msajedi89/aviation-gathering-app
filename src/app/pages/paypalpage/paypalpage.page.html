@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="dark">
+        <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Payment Methods
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="keep-card">
+    <ion-card class="cardAllEvents">
+      <img src="{{ ticketImage }}" alt="" />
+      <ion-card-title>{{ ticket.Title }}</ion-card-title>
+      <p class="keep-summary">{{ ticket.Summary }}</p>
+      <ion-card-content>
+        <h5 class="keep-ticket-type">Ticket Type: {{ ticket.TicketType }}</h5>
+        <h5 class="keep-ticket-count">Ticket Count: {{ ticket.Count }}</h5>
+        <h5 class="keep-total-price">Total Payment: ${{ paymentAmount }}</h5>
+        <ion-button *ngIf="!hasPaid" expand="block" color="secondary" (click)="payWithPaypal()" size="small">Pay with
+          PayPal
+        </ion-button>
+
+        <p>{{ paypalResult }}</p>
+        <h3 *ngIf="transactionId" class="keep-transaction-id">Transaction ID: {{ transactionId }}</h3>
+
+        <ion-button *ngIf="hasPaid" expand="block" color="dark" (click)="goToSeeCustomerTickets()" size="small">Go to see your Tickets
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

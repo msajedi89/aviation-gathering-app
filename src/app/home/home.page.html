@@ -1,0 +1,178 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Aviation Gathering
+    </ion-title>
+    <ion-icon name="chatbubbles" *ngIf="userLoginStatus" (click)="goToSingleChat()" slot="end" style="font-size: 30px;">
+    </ion-icon><sup *ngIf="userLoginStatus" slot="end" style="color: red; font-size: medium;">{{ messagesCount }}</sup>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Hero Starts Here -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <h2 class="sub-headline">
+        <span class="first-letter">W</span>elcome
+      </h2>
+      <h1 class="headline">Aviation Gathering</h1>
+      <div class="headline-description">
+        <div class="separator">
+          <div class="line line-left"></div>
+          <div class="airplane">
+            <ion-icon name="airplane" class="airplane-icon"></ion-icon>
+          </div>
+          <div class="line line-right"></div>
+        </div>
+        <div class="single-animation">
+          <h5>Ready to Explore</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Hero Ends Here -->
+
+  <div *ngIf="!isLoadedActiveEvents">
+    <h4>Open For Sale Events</h4>
+    <p class="keep-spinner">
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+  <div class="keepActiveEvents" *ngIf="isLoadedActiveEvents">
+    <h4>Open For Sale Events</h4>
+
+    <div class="has-no-active-events" *ngIf="activeEvents == '0 result'">
+      <p>There is no Incoming Event.</p>
+      <p class="description">Explore our past Events in the next section.</p>
+    </div>
+
+    <div class="has-active-events" *ngIf="activeEvents != '0 result'">
+      <div *ngFor="let item of activeEvents">
+        <ion-card class="keep-active-events-card">
+          <img src="{{ eventsProfileImageUrl + item.Img }}" alt="" />
+          <ion-card-header>
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-card-subtitle slot="start" class="location">{{ item.Location }}</ion-card-subtitle>
+              <ion-card-subtitle slot="end" class="limitedSeats">Limited Seats {{ item.NormalSeats }}
+              </ion-card-subtitle>
+            </ion-item>
+            <ion-card-title class="activeEventTitle">{{ item.Title }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="summery">{{ item.Summary }} - Click to see Details</p>
+            <p class="startDate"><span>Start Date: </span>{{ item.StartDate }}</p>
+            <p class="endDate"><span>End Date: </span>{{ item.EndDate }}</p>
+
+            <div class="keep-book-event-button">
+              <ion-button expand="block" color="primary" (click)="bookTicket(item.EventID)" size="small">BOOK YOUR
+                TICKET
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Tasteful recipes starts Here -->
+  <section class="tasteful-recipes between">
+    <div class="container">
+      <div class="global-headline">
+        <div class="animate-top">
+          <h2 class="sub-headline">
+            <span class="first-letter">A</span>viators
+          </h2>
+        </div>
+        <div class="animate-bottom">
+          <h1 class="headline">Meetings</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Tasteful recipes ends Here -->
+
+  <p id="allEvents"></p>
+  <div *ngIf="!isLoadedAllEvents">
+    <h4 style="margin-bottom: 10px !important;">All Events</h4>
+    <p class="keep-spinner">
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+  <div class="all-events-block" *ngIf="isLoadedAllEvents">
+    <h4 style="margin-bottom: 10px !important;">All Events</h4>
+
+    <ion-slides [options]="sliderConfig" class="slidesAllEvents">
+      <ion-slide *ngFor="let item of allEvents">
+        <ion-card class="cardAllEvents">
+          <img src="{{ eventsProfileImageUrl + item.Img }}" alt="" />
+          <ion-card-content>
+            <h5 style="font-weight: bold; margin-bottom: 10px;">{{ item.Title }}</h5>
+            <h6 style="margin-bottom: 30px; color: var(--ion-color-danger);">{{ item.Location }}</h6>
+            <ion-button expand="block" color="warning" (click)="bookTicket(item.EventID)" size="small">DETAILS
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <!-- Tasteful recipes starts Here -->
+  <section class="latest-news between">
+    <div class="container">
+      <div class="global-headline">
+        <div class="animate-top">
+          <h2 class="sub-headline">
+            <span class="first-letter">U</span>pgrade
+          </h2>
+        </div>
+        <div class="animate-bottom">
+          <h1 class="headline">Your Knowledge</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Tasteful recipes ends Here -->
+
+
+  <div *ngIf="!isLoadedNews">
+    <h4 style="font-weight: bold;" slot="start">Latest News</h4>
+    <p class="keep-spinner">
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+  <div class="all-news-block" *ngIf="isLoadedNews">
+
+    <ion-grid>
+      <ion-row size="12">
+        <ion-col size="9">
+          <h4 style="font-weight: bold;">Latest News</h4>
+        </ion-col>
+        <ion-col size="3">
+          <h6 (click)="showMoreNews()">Show More</h6>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-list style="margin-top: 0px;">
+      <ion-item-sliding *ngFor="let item of allNews">
+        <ion-item lines="none">
+          <ion-thumbnail slot="start">
+            <img src="{{ newsImageUrl + item.Image }}" alt="">
+          </ion-thumbnail>
+          <ion-label>
+            <p class="news-summary">{{ item.Summary }} - <span class="show-news-details"
+                (click)="showNewsDetail(item.NewsID)">Show More</span></p>
+            <h3 class="news-date">{{ item.PublishedDate | date }}</h3>
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+  <p id="demo" class="CountDown"></p>
+</ion-content>

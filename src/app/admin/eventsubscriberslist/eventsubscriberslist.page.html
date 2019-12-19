@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="dark">
+        <ion-icon name="arrow-back" slot="start"
+          style="padding-right: 0px !important; margin-right: 0px !important; font-size: 30px;">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{ event.Title }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <img src="{{ eventImage }}" alt="">
+    <ion-card-header>
+      <ion-card-title color="primary" style="margin-bottom: 15px !important;">
+        {{ event.Title }}
+      </ion-card-title>
+      <p>{{ event.Summary }}</p>
+      <p>You can see Ticket Details by clicking on each subscriber you want.</p>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-list>
+    <ion-item lines="none">
+      <h5 style="margin-bottom: 15px;" slot="start">Subscribers</h5>
+      <ion-button slot="end" *ngIf="eventSubscribers != '0 result'" expand="block" color="dark" fill="outline"
+        (click)="downloadAsPDF()" size="small">
+        Download as PDF
+      </ion-button>
+    </ion-item>
+
+
+    <div style="text-align: center;" *ngIf="!isLoaded">
+      <p>
+        <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+      </p>
+    </div>
+
+    <div class="keep-all-subscribers" *ngIf="isLoaded">
+      <div class="no-subscribers" *ngIf="eventSubscribers == '0 result'">
+        <p>No subscribers yet !!</p>
+      </div>
+
+      <div class="all-subscribers" *ngIf="eventSubscribers != '0 result'">
+        <div class="keep-pdf-download-link">
+          <a href="{{ pdfLink }}" *ngIf="pdfLinkIsReady">Click to Download</a>
+        </div>
+        <div *ngFor="let item of eventSubscribers;">
+          <ion-item (click)="showDetails(item.TicketID)">
+            <ion-avatar slot="start">
+              <img src="{{ userProfileImageURL + item.ProfileImg }}" alt="">
+            </ion-avatar>
+            <ion-label>
+              <h2 style="white-space: normal;">{{ item.Name }} {{ item.Family }}</h2>
+              <p style="white-space: normal;">Ticket Count: {{ item.Count }} ({{ item.TicketType }})</p>
+            </ion-label>
+            <ion-note slot="end">{{ item.SaleDate | date }}</ion-note>
+          </ion-item>
+        </div>
+      </div>
+    </div>
+  </ion-list>
+
+</ion-content>

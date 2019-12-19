@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="dark">
+        <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Event
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="!isLoggedIn" class="not-logged-in">
+    <h4>Attention</h4>
+    <p>You are not logged in, if you want to Book Your Ticket, you need to login first.</p>
+    <p class="keep-login-button">
+      <ion-button expand="block" color="dark" (click)="login()" size="small">Login</ion-button>
+    </p>
+  </div>
+
+  <div *ngIf="isLoggedIn" class="user-logged-in">
+    <ion-card class="ticket-inputs-card">
+      <h5>Ticket Information</h5>
+      <ion-card-content>
+
+        <div class="keep-segment" *ngIf="isRanked">
+          <ion-segment value="normal">
+            <ion-segment-button value="normal" (ionSelect)="segmaentChangedToNormal($event,ticketCountInput)">
+              <ion-label>Normal Seat</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="vip" (ionSelect)="segmaentChangedToVip($event,ticketCountInput)">
+              <ion-label>VIP Seat</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+
+        <div class="keep-seat-info">
+          <ion-row>
+            <ion-col size="5">
+              <ion-label>Seats Left: {{ seatsLeft }}</ion-label>
+            </ion-col>
+            <ion-col size="7">
+              <ion-label>Price Per Seat: {{ seatPrice }} AED</ion-label>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <div class="keep-inputs">
+          <ion-label>Ticket Count:</ion-label>
+          <ion-item lines="none">
+            <ion-icon name="person" color="dark" slot="start" style="font-size: 30px;"></ion-icon>
+            <ion-input type="text" color="dark" [(ngModel)]="ticketCountInput" placeholder="Ticket Count"></ion-input>
+          </ion-item>
+        </div>
+
+        <div class="keep-total-price">
+          <p><span class="total-price-label">Total Price: </span><span class="keep-total-price">{{ totalPrice }}
+              AED</span></p>
+        </div>
+
+        <div class="keep-payment-button">
+          <p align="center">
+            <ion-button expand="block" color="secondary" (click)="payment(ticketCountInput)" size="small">Payment</ion-button>
+          </p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+  <div class="keep-event-card">
+    <ion-card>
+      <ion-item lines="none">
+        <ion-thumbnail slot="start">
+          <img src="{{ eventImage }}" alt="">
+        </ion-thumbnail>
+        <ion-label>
+          <h2 style="white-space: normal;">{{ event.Title }}</h2>
+          <p style="white-space: normal;">{{ event.Summary }}</p>
+          <h3 style="font-size: small; color: #eb596d;">Start Date: {{ event.PublishedDate | date }}</h3>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
+
+</ion-content>

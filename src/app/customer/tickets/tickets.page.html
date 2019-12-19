@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Tickets
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="keep-header-card">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title color="primary">
+          Your Tickets
+        </ion-card-title>
+        <p>All of your <em>Tickets</em> are listed bellow. you can see their details by swiping them left.</p>
+      </ion-card-header>
+    </ion-card>
+  </div>
+
+  <div style="text-align: center;" *ngIf="!isLoaded">
+    <p class="keep-spinner">
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+
+  <div *ngIf="isLoaded">
+    <div class="has-no-ticket" *ngIf="!hasTicket">
+      <h4>Attention</h4>
+      <p>You have no ticket. See our incoming events and book a ticket.</p>
+      <p class="keep-our-event-button">
+        <ion-button expand="block" color="primary" (click)="goToSeeTickets()" size="small">See Our Events</ion-button>
+      </p>
+    </div>
+
+
+    <div class="keep-ticket-list" *ngIf="hasTicket">
+      <ion-list style="margin-top: 10px;">
+        <ion-item-sliding *ngFor="let item of allTickets">
+          <ion-item class="item-ribbon">
+            <span class="ribbon cruzeiro" *ngIf="item.Payment=='0'">
+              <span>Not Paid</span>
+            </span>
+            <ion-thumbnail slot="start">
+              <img src="{{ eventsImageURL + item.Img }}" alt="">
+            </ion-thumbnail>
+            <ion-label>
+              <h2 style="white-space: normal;">{{ item.Title }}</h2>
+              <p style="white-space: normal;">Ticket Count: {{ item.Count }}</p>
+              <h3 style="font-size: small; color: #eb596d;">Start Date: {{ item.StartDate | date }}</h3>
+            </ion-label>
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option color="primary" (click)="showDetails(item.TicketID)">
+              <ion-icon name="information-circle-outline" style="font-size: x-large;" slot="top"></ion-icon>
+              Details
+            </ion-item-option>
+            <ion-item-option color="secondary" *ngIf="item.Payment=='0'" (click)="payTicket(item.TicketID)">
+              <ion-icon name="checkmark" style="font-size: x-large;" slot="top"></ion-icon>
+              Pay
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </div>
+
+</ion-content>

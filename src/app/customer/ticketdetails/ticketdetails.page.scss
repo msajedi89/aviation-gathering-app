@@ -1,0 +1,76 @@
+ion-content {
+  //--ion-background-color: #ffeac9;
+}
+
+.keep-ticket {
+    .welcome-card {
+  
+      img {
+        max-height: 35vh;
+        overflow: hidden;
+      }
+  
+      .summery {
+        margin-top: 0px;
+        padding-top: 0px;
+      }
+  
+      .keepButton {
+        margin-top: 30px;
+        
+        ion-button {
+          --border-radius: 50px;
+          width: 200px;
+        }
+      }
+
+      .ion-no-padding {
+        --background: transparent !important;
+      }
+    }
+  
+    h4 {
+      margin-left: 10px;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+  
+    .activeEventTitle {
+      color: var(--ion-color-dark);
+    }
+  
+    .location {
+      color: var(--ion-color-dark);
+    }
+
+    .keep-dates {
+        margin-top: 0px !important;
+        margin-bottom: 8px !important;
+
+        .keep-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .keep-date {
+            font-size: 16px;
+            color: var(--ion-color-danger);
+        }
+    }
+
+    .keep-ticket-info {
+
+        .ticket-type {
+            color: var(--ion-color-warning);
+        }
+
+        .ticket-count {
+            color: var(--ion-color-success);
+        }
+
+        .ticket-total-price {
+            color: var(--ion-color-danger);
+        }
+    }
+  
+}

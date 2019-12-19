@@ -1,0 +1,55 @@
+<ion-content forceOverscroll="false">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="primary">
+        <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
+        </ion-icon>
+        Back
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+
+  <div>
+    <ion-row>
+      <ion-col>
+        <ion-list class="no-border">
+          <h3>Sign Up:</h3>
+          <ion-item>
+            <ion-label color="primary">Name: </ion-label>
+            <ion-input type="text" [(ngModel)]="name" placeholder="Required"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label color="primary">Family: </ion-label>
+            <ion-input type="text" [(ngModel)]="family" placeholder="Required"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label color="primary">Username: </ion-label>
+            <ion-input type="text" [(ngModel)]="username" placeholder="Required"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label color="primary">Password: </ion-label>
+            <ion-input type="password" [(ngModel)]="password" placeholder="Required"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label color="primary">Email: </ion-label>
+            <ion-input type="text" [(ngModel)]="email"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button class="login-button" (click)="signup(name,family,username,password,email)">SIGN UP</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="errorMsg">
+          <p>{{ errorMsg }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

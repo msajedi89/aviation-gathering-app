@@ -1,0 +1,17 @@
+ion-content {
+    //--ion-background-color: #ffeac9;
+}
+
+.keep-header {
+    padding: 10px;
+    ion-item {
+        --min-height: 50px;
+    
+        ion-thumbnail {
+            img {
+                border-radius: 50%;
+            }
+        }
+    }
+}
+

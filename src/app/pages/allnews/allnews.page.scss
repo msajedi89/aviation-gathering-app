@@ -1,0 +1,16 @@
+ion-content {
+    //--ion-background-color: #ffeac9;
+}
+
+ion-item {
+    --min-height: 100px;
+
+    ion-thumbnail {
+        height: 100px;
+        width: 100px;
+
+        img {
+            border-radius: 15px;
+        }
+    }
+}

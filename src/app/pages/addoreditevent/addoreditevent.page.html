@@ -1,0 +1,128 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="dark">
+        <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Event
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list style="margin-top: 15px; padding-left: 0px !important;">
+    <ion-list-header>
+      General
+    </ion-list-header>
+    <ion-item>
+      <ion-label slot="start" style="margin-right: 55px;">Title: </ion-label>
+      <ion-input type="text" [(ngModel)]="title" placeholder="Required" value="{{ event.Title }}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Summary: </ion-label>
+      <ion-textarea type="text" rows="3" [(ngModel)]="summary" value="{{ event.Summary }}"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description: </ion-label>
+      <ion-textarea type="text" rows="5" [(ngModel)]="description" value="{{ event.Description }}"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Specifications
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="ribbon" slot="start"></ion-icon>
+      <ion-label>VIP Guests: </ion-label>
+      <ion-textarea type="text" rows="3" [(ngModel)]="vipGuests" value="{{ event.VipGuests }}"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="pin"></ion-icon>
+      <ion-label>Location: </ion-label>
+      <ion-input type="text" [(ngModel)]="location" value="{{ event.Location }}"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Date & Time settings
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label>Start Date: <span style="color: red;">*</span></ion-label>
+      <ion-datetime [(ngModel)]="startDate" display-format="DD/MM/YYYY H:mm" min="2019" max="2050" value="{{ event.StartDate }}">
+      </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>End Date: <span style="color: red;">*</span></ion-label>
+      <ion-datetime [(ngModel)]="endDate" display-format="DD/MM/YYYY H:mm" min="2019" max="2050" value="{{ event.EndDate }}">
+      </ion-datetime>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Seats information
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="list-box" slot="start"></ion-icon>
+      <ion-label>Is Ranked: </ion-label>
+      <ion-toggle [(ngModel)]="isRanked" slot="end"></ion-toggle>
+    </ion-item>
+    <div class="seatsTextBoxs">
+      <ion-item>
+        <ion-label slot="start">Normal Seats Count: </ion-label>
+        <ion-input type="text" [(ngModel)]="normalSeats" placeholder="Required" [value]="event.NormalSeats"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label slot="start" style="font-size: small;">Price for Normal Seats(AED): </ion-label>
+        <ion-input type="text" [(ngModel)]="normalPrice" placeholder="Required" value="{{ event.NormalPrice }}"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="isRanked">
+        <ion-label slot="start">VIP Seats Count: </ion-label>
+        <ion-input type="text" [(ngModel)]="vipSeats" placeholder="Required" value="{{ event.VipSeats }}"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="isRanked">
+        <ion-label slot="start" style="font-size: small;">Price for VIP Seats(AED): </ion-label>
+        <ion-input type="text" [(ngModel)]="vipPrice" placeholder="Required" value="{{ event.VipPrice }}"></ion-input>
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <ion-list class="keep-image">
+    <ion-list-header>
+      Event Image
+    </ion-list-header>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="{{ eventImage }}" style="border-radius: 15px;" alt="">
+      </ion-thumbnail>
+      <p>{{ eventImageFileName }}</p>
+      <ion-button slot="end" size="small" (click)="selectImage()">Select</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header color="danger">
+      Ticket sale Status
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="cart" slot="start"></ion-icon>
+      <ion-label>Open for sale ticket: </ion-label>
+      <ion-toggle [(ngModel)]="openTicket" slot="end"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <div class="keep-save-button">
+    <ion-button
+      (click)="saveChanges(title,summary,description,vipGuests,location,startDate,endDate,normalSeats,normalPrice,vipSeats,vipPrice)"
+      expand="block">Save</ion-button>
+  </div>
+
+</ion-content>
